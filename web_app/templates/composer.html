@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI MUSIC COMPOSER - Composer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-notes" id="background-notes"></div>
+
+    <div class="composer-full-page">
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <h2>AI MUSIC COMPOSER</h2>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>{{ username }}</span>
+                </div>
+            </div>
+
+            <div class="sidebar-content">
+                <form id="composer-form">
+                    <div class="control-group">
+                        <label for="genre"><i class="fas fa-music"></i> Musical Genre</label>
+                        <select id="genre" name="genre">
+                            {% for genre in genres %}
+                            <option value="{{ genre }}">{{ genre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="duration"><i class="fas fa-clock"></i> Duration (seconds)</label>
+                        <input type="number" id="duration" name="duration" value="30" min="5" max="90">
+                        <small style="color: #b2bec3; font-size: 0.8rem; display: block; margin-top: 5px;">* Seconds
+                            should be between 5 to 90</small>
+                    </div>
+
+                    <button type="submit" class="btn compose-btn" id="compose-btn">
+                        <i class="fas fa-magic"></i> Compose Music
+                    </button>
+                </form>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="/logout" class="btn logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content glass-panel">
+            <div class="visualization-area">
+                <div class="visualizer-mock" id="visualizer" style="display: none;">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <div id="status-container" class="status-container">
+                    <div id="status-icon" class="status-icon">
+                        <i class="fas fa-headphones-alt"></i>
+                    </div>
+                    <div id="status-text">
+                        <h3>Ready to Create?</h3>
+                        <p>Select your parameters and let AI compose for you.</p>
+                    </div>
+                </div>
+
+                <div id="audio-player-container" class="audio-player-container" style="display: none;">
+                    <audio id="audio-player" controls>
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="download-links" id="download-links"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

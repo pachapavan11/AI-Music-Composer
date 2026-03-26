@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI MUSIC COMPOSER - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="background-notes" id="background-notes"></div>
+
+    <div class="login-container">
+        <h1>AI MUSIC COMPOSER</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="captcha">Security Check: {{ captcha_question }}</label>
+                <input type="number" id="captcha" name="captcha" placeholder="?" required>
+            </div>
+
+            <p class="error-msg" id="error-msg"></p>
+
+            <button type="submit" class="btn">Enter Studio</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
