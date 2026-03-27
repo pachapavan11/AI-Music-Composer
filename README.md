@@ -30,7 +30,7 @@ The system takes musical sequences as input, processes them using a trained deep
 
 ## 📂 Project Structure
 AI-Music-Composer/
-│── data/ # Dataset (ZIP file)
+#│── data/ # Dataset (ZIP file)
 │── notebooks/ # Jupyter notebooks
 │── model/ # Trained model files
 │── static/ # CSS, JS files
